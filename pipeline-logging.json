@@ -32,9 +32,8 @@
             }
         ],
         "logging": {
-            "cloudWatchLogs": {
-                "status": "ENABLED"
-            }
+            "enabled": true,
+            "logGroupName": "/aws/codepipeline/cloudmart-cicd-pipeline"
         }
     }
 }
