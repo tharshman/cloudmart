@@ -1,0 +1,40 @@
+{
+    "pipeline": {
+        "name": "cloudmart-cicd-pipeline",
+        "roleArn": "arn:aws:iam::976193221400:role/service-role/AWSCodePipelineServiceRole-us-east-2-cloudmart-cicd-pipeline",
+        "artifactStore": {
+            "type": "S3",
+            "location": "codepipeline-us-east-2-865961211677"
+        },
+        "stages": [
+            {
+                "name": "Source",
+                "actions": [
+                    {
+                        "name": "Source",
+                        "actionTypeId": {
+                            "category": "Source",
+                            "owner": "AWS",
+                            "provider": "CodeStarSourceConnection",
+                            "version": "1"
+                        },
+                        "configuration": {
+                            "BranchName": "main",
+                            "ConnectionArn": "arn:aws:codeconnections:us-east-2:976193221400:connection/90872b06-8ba3-4d36-964d-20d51e751687",
+                            "DetectChanges": "true",
+                            "FullRepositoryId": "tharshman/cloudmart",
+                            "OutputArtifactFormat": "CODE_ZIP"
+                        },
+                        "outputArtifacts": [{ "name": "SourceArtifact" }],
+                        "region": "us-east-2"
+                    }
+                ]
+            }
+        ],
+        "logging": {
+            "cloudWatchLogs": {
+                "status": "ENABLED"
+            }
+        }
+    }
+}
